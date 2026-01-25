@@ -1,0 +1,15 @@
+# format-configs
+repos:
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx --yes -p prettier -p prettier-plugin-tailwindcss prettier --config .prettierrc.json --ignore-path .prettierignore --write
+        language: system
+        files: \.(js|jsx|ts|tsx|json|jsonc|yaml|yml|css|scss|html|vue|svelte|astro)$
+        exclude: ^\.pre-commit-config\.ya?ml$
+      - id: markdownlint
+        name: markdownlint
+        entry: npx --yes -p markdownlint-cli markdownlint --config .markdownlint.json --ignore-path .markdownlintignore
+        language: system
+        files: \.(md|mdx)$
